@@ -1,15 +1,14 @@
 {
-  "name": "mesto-backend",
+  "name": "moviesExplorator",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint .",
     "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "Nick Shvaika",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

@@ -4,30 +4,11 @@ const bcrypt = require('bcryptjs');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const userSchema = new mongoose.Schema({
-  avatar: {
-    type: String,
-    required: false,
-    default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
-    // eslint-disable-next-line no-useless-escape
-    validate: /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/gi,
-  },
   name: {
     type: String,
     required: false,
     minlength: 2,
     maxlength: 30,
-    default: 'Жак-Ив Кусто',
-  },
-  about: {
-    type: String,
-    required: false,
-    minlength: 2,
-    maxlength: 30,
-    default: 'Исследователь Океана',
-  },
-  __v: {
-    type: Number,
-    select: false,
   },
   email: {
     type: String,
