@@ -44,7 +44,7 @@ const movieSchema = new mongoose.Schema({
     maxlength: 30,
     ref: 'user',
   },
-  movieId: {
+  moviesId: {
     type: String,
     required: true,
   },
