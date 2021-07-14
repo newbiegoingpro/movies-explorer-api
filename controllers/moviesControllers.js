@@ -54,10 +54,10 @@ module.exports.deleteMovie = (req, res, next) => {
   const owner = req.user._id;
   Movie.findById(req.params.movieId)
     // eslint-disable-next-line consistent-return
-    .then((card) => {
-      if (!card) {
+    .then((movie) => {
+      if (!movie) {
         throw new NotFoundError('Фильма с таким Id нет');
-      } else if (owner === card.owner.toString()) {
+      } else if (owner === movie.owner.toString()) {
         Movie.findByIdAndDelete(req.params.movieId)
           .then(() => res.status(200).send({ message: 'Фильм удален' }))
           .catch(next);
