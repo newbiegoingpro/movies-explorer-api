@@ -52,13 +52,13 @@ module.exports.createMovie = (req, res, next) => {
 };
 module.exports.deleteMovie = (req, res, next) => {
   const owner = req.user._id;
-  Movie.findById(req.params.movieId)
+  Movie.findById(req.params.movieId.toString())
     // eslint-disable-next-line consistent-return
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError('Фильма с таким Id нет');
       } else if (owner === movie.owner.toString()) {
-        Movie.findByIdAndDelete(req.params.movieId)
+        Movie.findByIdAndDelete(req.params.movieId.toString())
           .then(() => res.status(200).send({ message: 'Фильм удален' }))
           .catch(next);
       } else {
