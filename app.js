@@ -13,6 +13,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const userRouter = require('./routes/users');
 const moviesRouter = require('./routes/movies');
 const blankRouter = require('./routes/blank');
+const signupRouter = require('./routes/register');
+const signinRouter = require('./routes/authorize');
 const userControllers = require('./controllers/userControllers');
 const auth = require('./middlewares/auth');
 
@@ -33,18 +35,8 @@ mongoose.connect('mongodb://localhost:27017/testDiplomaDB', {
   useUnifiedTopology: true,
 });
 app.use(requestLogger);
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-  }).unknown(true),
-}), userControllers.login);
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-  }).unknown(true),
-}), userControllers.createUser);
+app.use('/', signupRouter);
+app.use('/', signinRouter);
 app.use(auth);
 app.use('/', userRouter);
 app.use('/', moviesRouter);
