@@ -52,8 +52,7 @@ module.exports.createMovie = (req, res, next) => {
 };
 module.exports.deleteMovie = (req, res, next) => {
   const owner = req.user._id;
-  Movie.findById(req.params.movieId.toString())
-    // eslint-disable-next-line consistent-return
+  Movie.findById(req.params.movieId)
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError('Фильма с таким Id нет');
