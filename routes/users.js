@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const validator = require('validator');
 const { updateUser, getCurrentUser } = require('../controllers/userControllers');
 
 router.get('/users/me', getCurrentUser);
