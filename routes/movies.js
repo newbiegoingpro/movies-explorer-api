@@ -13,21 +13,7 @@ const {
   createMovie, getMovies, deleteMovie,
 } = require('../controllers/moviesControllers');
 
-router.post('/movies', celebrate({
-  body: Joi.object().keys({
-    country: Joi.string().required(),
-    director: Joi.string().required(),
-    duration: Joi.number().required(),
-    year: Joi.string().required(),
-    description: Joi.string().required(),
-    image: Joi.string().required().custom(method),
-    trailer: Joi.string().required().custom(method),
-    thumbnail: Joi.string().required().custom(method),
-    movieId: Joi.number().required(),
-    nameRU: Joi.string().required(),
-    nameEN: Joi.string().required(),
-  }),
-}), createMovie);
+router.post('/movies', createMovie);
 
 router.get('/movies', getMovies);
 
