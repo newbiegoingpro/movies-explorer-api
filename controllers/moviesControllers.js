@@ -58,7 +58,7 @@ module.exports.deleteMovie = (req, res, next) => {
         throw new NotFoundError('Фильма с таким Id нет');
       } else if (owner === movie.owner.toString()) {
         Movie.findByIdAndDelete(req.params.movieId.toString())
-          .then(({ movie }) => res.status(200).send({ movie }))
+          .then((data) => res.status(200).send(data))
           .catch(next);
       } else {
         throw new ForbiddenError('Удалить можно только свой фильм.');
