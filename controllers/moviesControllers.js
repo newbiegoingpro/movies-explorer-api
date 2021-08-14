@@ -4,7 +4,7 @@ const ForbiddenError = require('../errors/ForbiddenError');
 const BadRequestError = require('../errors/BadRequestError');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movie) => res.status(200).send(movie))
     .catch(next);
 };
@@ -52,14 +52,13 @@ module.exports.createMovie = (req, res, next) => {
 };
 module.exports.deleteMovie = (req, res, next) => {
   const owner = req.user._id;
-  Movie.findById(req.params.movieId.toString())
-    // eslint-disable-next-line consistent-return
+  Movie.findById(req.params.movieId)
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError('Фильма с таким Id нет');
       } else if (owner === movie.owner.toString()) {
-        Movie.findByIdAndDelete(req.params.movieId.toString())
-          .then(() => res.status(200).send({ message: 'Фильм удален' }))
+        Movie.findByIdAndDelete(req.params.movieId)
+          .then(() => res.status(200).send({ message: 'Какой чудесный день' }))
           .catch(next);
       } else {
         throw new ForbiddenError('Удалить можно только свой фильм.');

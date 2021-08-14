@@ -1,5 +1,4 @@
 const express = require('express');
-const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const cors = require('cors');
 require('dotenv').config();
@@ -15,7 +14,6 @@ const moviesRouter = require('./routes/movies');
 const blankRouter = require('./routes/blank');
 const signupRouter = require('./routes/register');
 const signinRouter = require('./routes/authorize');
-const userControllers = require('./controllers/userControllers');
 const auth = require('./middlewares/auth');
 
 app.use(express.json());
@@ -23,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://nick.mestoapp.nomoredomains.club',
-    'http://nick.mestoapp.nomoredomains.club',
+    'https://shvaikanick.diploma.nomoredomains.club',
+    'http://shvaikanick.diploma.nomoredomains.club',
   ],
   credentials: true,
 }));
@@ -55,5 +53,4 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`${PORT}`);
 });
