@@ -40,7 +40,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((movie) => res.status(201).send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данныеt');
+        throw new BadRequestError('Переданы некорректные данные');
       }
     })
     .catch((err) => {
