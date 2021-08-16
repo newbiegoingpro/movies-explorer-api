@@ -18,6 +18,7 @@ const auth = require('./middlewares/auth');
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.options('*', cors());
 app.use(cors({
   origin: [
     'http://localhost:3000',
