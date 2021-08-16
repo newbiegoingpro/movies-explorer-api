@@ -20,14 +20,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.options('*', cors());
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://diplomashvayka.nomoredomains.club',
-    'http://diplomashvayka.nomoredomains.club',
-  ],
+  origin: '*',
   credentials: true,
-  methods: 'POST, OPTIONS, GET, DELETE, PATCH, PUT',
-  optionsSuccessStatus: 200,
 }));
 mongoose.connect('mongodb://localhost:27017/testDiplomaDB', {
   useNewUrlParser: true,
