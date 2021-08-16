@@ -26,6 +26,7 @@ app.use(cors({
     'http://diplomashvayka.nomoredomains.club',
   ],
   credentials: true,
+  methods: 'POST, OPTIONS, GET, DELETE, PATCH, PUT',
 }));
 mongoose.connect('mongodb://localhost:27017/testDiplomaDB', {
   useNewUrlParser: true,
