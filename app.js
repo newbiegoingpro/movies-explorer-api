@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://shvaikanick.diploma.nomoredomains.club',
-    'http://shvaikanick.diploma.nomoredomains.club',
+    'https://diplomashvayka.nomoredomains.club',
+    'http://diplomashvayka.nomoredomains.club',
   ],
   credentials: true,
 }));
