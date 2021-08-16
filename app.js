@@ -27,6 +27,7 @@ app.use(cors({
   ],
   credentials: true,
   methods: 'POST, OPTIONS, GET, DELETE, PATCH, PUT',
+  optionsSuccessStatus: 200,
 }));
 mongoose.connect('mongodb://localhost:27017/testDiplomaDB', {
   useNewUrlParser: true,
