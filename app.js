@@ -3,7 +3,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 require('dotenv').config();
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const mongoose = require('mongoose');
 
 const app = express();
