@@ -43,7 +43,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       console.log(NODE_ENV);
       const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? 'some-secret-key' : JWT);
-      res.send({ token });
+      res.send({ token, user });
     })
     .catch(next);
 };
